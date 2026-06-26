@@ -1,28 +1,14 @@
-# LIVIO – Biglers Insektenschutz-Lotse
+# LIVIO – Sprint 1.5
 
-Pilot-Webapp fuer die Schreinerei Bigler.
+Umgesetzt:
+- Bigler-Logo als Bild in `public/images/logo-bigler.png`
+- Symbolkarten im Skizzenstil bei allen wichtigen Auswahlen
+- Produktwahl nach Empfehlung: Spannrahmen, Rollo, Plissee, Schiebetüre, Pendeltüre, Drehtüre, Weiss ich nicht
+- Lichtschacht hat eigenen Kurzfluss ohne Fensterfragen
+- Übermass-Prüfung mit aktiver Bestätigung, bevor gespeichert werden kann
+- Fotos pro Element als Upload vorbereitet
+- Projektübersicht in der Mitte, Sidebar nur noch Gesamtübersicht
+- Beratung anfragen vorbereitet mit Kontaktdaten, Mailto, PDF-Druck und Projekt-JSON
 
-## Sprint 1.4
-
-Enthalten:
-
-- echte Umlaute und Schweizer Schreibweise im UI
-- Bigler-Logo statt Winkehand
-- PLZ/Ort-Vorschlaege
-- Skizzenstil-Symbole fuer Bereich, Bauteil, Fenstersituation, Material und Beschattung
-- Bereich bleibt aktiv, bis der Benutzer ihn bewusst abschliesst
-- neues Bauteil startet immer wieder mit 1 Stk.
-- Abschluss: "Ihr Zuhause ist erfasst."
-- erste Kostenschaetzung mit MWST-Ausweis
-- Maximalmass-Pruefung pro Produktcode
-
-## Wichtig zur Maximalmass-Pruefung
-
-Die Limits sind im Code in `PRODUCT_LIMITS` hinterlegt. Elemente ausserhalb dieser Grenzen werden nicht automatisch bepreist, sondern fuer die manuelle Pruefung markiert. Die Werte muessen mit der finalen ISN-Preisliste nochmals fachlich abgeglichen werden.
-
-## Lokal starten
-
-```bash
-npm install
-npm run dev
-```
+Hinweis:
+Der automatische Mailversand mit PDF-Anhang und Originalfotos braucht im nächsten Schritt eine Serverfunktion oder Datenbank. Im Pilot erfolgt PDF über Browser-Druckfunktion.

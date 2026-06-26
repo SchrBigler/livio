@@ -57,3 +57,17 @@ small { font-size: 13px; color:#17211b; }
 .ok-box { background:#eaf3ec; border:1px solid #9fc7aa; border-radius:16px; padding:16px; margin:16px 0; color:#1f5d3f; line-height:1.45; }
 .estimate { background:#fffdfa; border:1px solid var(--line); border-radius:20px; padding:22px; box-shadow:none; margin:18px 0; }
 .suggestion.selected { background:#d2ead6; border-color:var(--green); }
+.brand img { height: 54px; width:auto; max-width: 280px; object-fit: contain; display:block; }
+.upload { border:1px dashed var(--line); background:#fffdfa; border-radius:18px; padding:24px; }
+.upload input { width:100%; }
+.thumbs { display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+.thumbs figure { margin:0; width:140px; }
+.thumbs img { width:140px; height:100px; object-fit:cover; border-radius:12px; border:1px solid var(--line); }
+.thumbs figcaption { font-size:11px; color:#58635d; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.check { display:flex; gap:12px; align-items:flex-start; background:#fff4db; border:1px solid #e7bd62; border-radius:16px; padding:16px; color:#6a4700; margin:12px 0; font-weight:700; }
+.project-list { display:grid; gap:14px; margin:20px 0; }
+.area-block { border:1px solid var(--line); border-radius:18px; padding:18px; background:#fffdfa; }
+.area-block h3 { margin:0 0 12px; }
+.row { border-top:1px solid var(--line); padding:12px 0; display:grid; grid-template-columns:1fr auto; gap:12px; }
+.small-thumbs { grid-column:1 / -1; }
+@media print { body{background:white;} .page{display:block;padding:0;} .card{box-shadow:none;border:0;border-radius:0;} .side,.back,.actions,.progress{display:none!important;} .thumbs img{height:auto;} }
