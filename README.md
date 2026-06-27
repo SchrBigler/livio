@@ -1,14 +1,10 @@
-# LIVIO – Sprint 1.5
+# LIVIO – Biglers Insektenschutz-Lotse
 
-Umgesetzt:
-- Bigler-Logo als Bild in `public/images/logo-bigler.png`
-- Symbolkarten im Skizzenstil bei allen wichtigen Auswahlen
-- Produktwahl nach Empfehlung: Spannrahmen, Rollo, Plissee, Schiebetüre, Pendeltüre, Drehtüre, Weiss ich nicht
-- Lichtschacht hat eigenen Kurzfluss ohne Fensterfragen
-- Übermass-Prüfung mit aktiver Bestätigung, bevor gespeichert werden kann
-- Fotos pro Element als Upload vorbereitet
-- Projektübersicht in der Mitte, Sidebar nur noch Gesamtübersicht
-- Beratung anfragen vorbereitet mit Kontaktdaten, Mailto, PDF-Druck und Projekt-JSON
+Sprint 1.6
 
-Hinweis:
-Der automatische Mailversand mit PDF-Anhang und Originalfotos braucht im nächsten Schritt eine Serverfunktion oder Datenbank. Im Pilot erfolgt PDF über Browser-Druckfunktion.
+- PLZ-Ort-Zuordnung erweitert und repariert
+- Rechte Seitenleiste zeigt während der Erfassung die erfassten Elemente statt Preise
+- Produktcode in Projektübersicht ergänzt, z.B. SP6/2, PL2, LS
+- Button "Zur Übersicht" auf jeder Seite ergänzt, sobald Elemente erfasst sind
+- Kundendaten am Schluss erweitert: Vorname, Nachname, E-Mail, Telefon, Ausführungszeitraum, Bemerkung an Bigler
+- Preis-/MWST-Übersicht bleibt auf Abschluss- und Anfrage-Seite sichtbar

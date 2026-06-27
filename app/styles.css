@@ -71,3 +71,11 @@ small { font-size: 13px; color:#17211b; }
 .row { border-top:1px solid var(--line); padding:12px 0; display:grid; grid-template-columns:1fr auto; gap:12px; }
 .small-thumbs { grid-column:1 / -1; }
 @media print { body{background:white;} .page{display:block;padding:0;} .card{box-shadow:none;border:0;border-radius:0;} .side,.back,.actions,.progress{display:none!important;} .thumbs img{height:auto;} }
+.top-actions { display:flex; gap:18px; align-items:center; margin: 22px 0; }
+.empty-list { color:#58635d; background:#fffdfa; border:1px dashed var(--line); border-radius:14px; padding:14px; }
+.side .project-list { gap:10px; }
+.side .area-block { padding:12px; border-radius:14px; }
+.side .area-block h3 { font-size:18px; margin-bottom:6px; }
+.side .row { display:block; font-size:13px; line-height:1.35; padding:8px 0; }
+.side .thumbs { display:none; }
+@media print { .top-actions { display:none!important; } }
