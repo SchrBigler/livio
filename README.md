@@ -1,20 +1,24 @@
-# LIVIO Sprint 1.9
+# LIVIO – Sprint 1.9.3 Vision im Projektstandard
 
-- Herstellerneutrale Logik: Holz, Holz-Alu, Kunststoff statt Fensterhersteller.
-- Kalkulationsbasis sichtbar: interne Produktcodes wie SP1/41, SP1/43, SP5/10, PT2/1, PT2/71, ST3/1, LI1/2.
-- SP6/2.A14 entfernt, da nicht sauber belegbar.
-- Produktempfehlung abhängig von Material/Beschattung/Bauteil.
-- Projektbezeichnung in Kontaktdaten, Mail und JSON ergänzt.
-- StandardsPanel im Projektstandard zeigt, welche Varianten LIVIO aktuell vererbt.
+Dieses Release erweitert Sprint 1.9.2:
 
+- Projektstandard kann direkt mit mehreren Fotos unterstützt werden
+- Fotostrecke: ganzes Fenster, geöffneter Flügel/Bandseite, Detail Ecke/Glasleiste, Aussen/Beschattung
+- KI-Vorschlag kann als Projektstandard übernommen werden
+- separater Vision Lab Tester bleibt unter `/vision-test` verfügbar
+- API-Route `/api/vision-analyze` verarbeitet bis zu 6 Bilder
 
-## Sprint 1.9.1
-- Bigler-Logo im Kopfbereich führt zurück zur Startseite.
+Voraussetzung in Vercel:
 
+```text
+OPENAI_API_KEY=...
+```
 
-## Sprint 1.9.2 Vision Tester
+Deployment:
 
-- Neue interne Testseite: `/vision-test`
-- API Route: `/api/vision-analyze`
-- Benötigt in Vercel: `OPENAI_API_KEY`
-- Logo auf Vision-Testseite führt zurück zur Startseite.
+```bash
+git add .
+git commit -m "Sprint 1.9.3 Vision Projektstandard"
+git pull --rebase
+git push
+```
