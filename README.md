@@ -6,3 +6,7 @@
 - Produktempfehlung abhängig von Material/Beschattung/Bauteil.
 - Projektbezeichnung in Kontaktdaten, Mail und JSON ergänzt.
 - StandardsPanel im Projektstandard zeigt, welche Varianten LIVIO aktuell vererbt.
+
+
+## Sprint 1.9.1
+- Bigler-Logo im Kopfbereich führt zurück zur Startseite.

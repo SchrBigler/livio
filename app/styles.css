@@ -49,6 +49,10 @@ p { font-size: 19px; line-height: 1.55; color: #3b443f; }
 small { font-size: 13px; color:#17211b; }
 @media (max-width: 900px) { .page { grid-template-columns: 1fr; padding: 14px; } .side { position: static; } .grid { grid-template-columns: 1fr; } .card { padding:24px; } }
 .brand { display:flex; align-items:center; gap:12px; }
+.brand-home { border:0; background:transparent; padding:0; cursor:pointer; text-align:left; }
+.brand-home:hover { opacity:.86; }
+.brand-home:focus-visible { outline:3px solid rgba(45,122,83,.35); outline-offset:6px; border-radius:12px; }
+
 .brand .sketch { width:54px; height:40px; border:0; background:transparent; }
 .brand .sketch svg { width:54px; height:38px; }
 .brand .sketch path, .brand .sketch rect, .brand .sketch ellipse { stroke: var(--green); stroke-width:5; }
