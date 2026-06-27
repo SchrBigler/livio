@@ -112,3 +112,43 @@ textarea { width:100%; min-height:110px; border:1px solid var(--line); border-ra
 .standards h3 { margin:0 0 8px; }
 .standards p { font-size:15px; margin:0 0 14px; color:#58635d; }
 .standards .item { border-top:1px solid #ddcfbd; padding-top:8px; }
+
+
+/* LIVIO Vision Tester */
+.vision-wrap{max-width:1320px;margin:0 auto;padding:28px;color:var(--text);}
+.vision-brand{display:flex;gap:18px;align-items:center;margin-bottom:24px;}
+.vision-logo{font-weight:900;letter-spacing:.18em;color:var(--green);font-size:28px;text-decoration:none;}
+.vision-logo:hover{opacity:.86;}
+.vision-brand span{color:#5c6963;}
+.vision-wrap .card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;margin-bottom:22px;box-shadow:0 10px 35px rgba(0,0,0,.03);}
+.vision-wrap .hero h1{font-size:44px;margin:0 0 10px;display:block;}
+.vision-wrap .hero p{font-size:20px;}
+.vision-wrap .hint{background:#fff3d8;border:1px solid #efc36c;border-radius:14px;padding:15px;}
+.vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.vision-wrap .file,.vision-wrap textarea{display:block;width:100%;border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0;font-size:16px;}
+.vision-wrap textarea{min-height:100px;resize:vertical;}
+.vision-wrap .vision-button{border:0;background:var(--green);color:white;border-radius:999px;padding:16px 24px;font-weight:800;font-size:17px;cursor:pointer;}
+.vision-wrap .vision-button:disabled{opacity:.45;cursor:not-allowed;}
+.vision-wrap .previews{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;}
+.vision-wrap .previews img{width:100%;height:145px;object-fit:cover;border-radius:14px;}
+.vision-wrap .previews figure{margin:0;}
+.vision-wrap .previews figcaption{font-size:12px;color:#667;margin-top:4px;word-break:break-all;}
+.vision-wrap .err{background:#ffe8e8;border:1px solid #ff9d9d;border-radius:14px;padding:12px;margin:12px 0;}
+.vision-wrap .muted{color:#667;}
+.vision-wrap .result h3{margin:16px 0 10px;font-size:22px;}
+.vision-wrap .row{border-bottom:1px solid var(--line);padding:13px 0;display:block;}
+.vision-wrap .row span{display:inline-block;width:130px;color:#55635d;}
+.vision-wrap .row b{font-size:17px;}
+.vision-wrap .row small{display:block;margin-left:130px;color:#5d6c66;margin-top:4px;}
+.vision-wrap .ok,.vision-wrap .mid,.vision-wrap .low{display:inline-block;margin-left:8px;border-radius:999px;padding:3px 8px;font-size:12px;}
+.vision-wrap .ok{background:#dff3e9;color:#1d754d;}
+.vision-wrap .mid{background:#fff3d8;color:#9b6500;}
+.vision-wrap .low{background:#ffe8e8;color:#a51b1b;}
+.vision-wrap .recommend{background:var(--soft-green);border:1px solid #bdd9ca;border-radius:16px;padding:16px;}
+.vision-wrap .recommend b{display:block;font-size:24px;}
+.vision-wrap .recommend span{display:block;margin-top:6px;}
+.vision-wrap .block{background:#faf8f3;border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:14px;}
+.vision-wrap .block ul,.vision-wrap .rules ul{margin:8px 0 0 20px;padding:0;}
+.vision-wrap .block li,.vision-wrap .rules li{margin:7px 0;}
+.vision-wrap pre{white-space:pre-wrap;background:#10231d;color:#e9fff4;border-radius:14px;padding:14px;overflow:auto;}
+@media(max-width:900px){.vision-grid{grid-template-columns:1fr}.vision-wrap .hero h1{font-size:34px}.vision-wrap .previews{grid-template-columns:1fr 1fr}.vision-wrap{padding:14px}}

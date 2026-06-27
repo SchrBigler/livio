@@ -10,3 +10,11 @@
 
 ## Sprint 1.9.1
 - Bigler-Logo im Kopfbereich führt zurück zur Startseite.
+
+
+## Sprint 1.9.2 Vision Tester
+
+- Neue interne Testseite: `/vision-test`
+- API Route: `/api/vision-analyze`
+- Benötigt in Vercel: `OPENAI_API_KEY`
+- Logo auf Vision-Testseite führt zurück zur Startseite.
