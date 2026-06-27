@@ -1,12 +1,8 @@
-# LIVIO Sprint 1.8
+# LIVIO Sprint 1.9
 
-Preisvalidierungs-Release mit Projektstandard, Farben, Gewebe, Produktcodes, Übermass-Prüfung, Elementnotizen, Fotos, Projektstatistik und sauberer Abschluss-/PDF-Funktion.
-
-## Hochladen
-
-```bash
-git add .
-git commit -m "Sprint 1.8"
-git pull --rebase
-git push
-```
+- Herstellerneutrale Logik: Holz, Holz-Alu, Kunststoff statt Fensterhersteller.
+- Kalkulationsbasis sichtbar: interne Produktcodes wie SP1/41, SP1/43, SP5/10, PT2/1, PT2/71, ST3/1, LI1/2.
+- SP6/2.A14 entfernt, da nicht sauber belegbar.
+- Produktempfehlung abhängig von Material/Beschattung/Bauteil.
+- Projektbezeichnung in Kontaktdaten, Mail und JSON ergänzt.
+- StandardsPanel im Projektstandard zeigt, welche Varianten LIVIO aktuell vererbt.
