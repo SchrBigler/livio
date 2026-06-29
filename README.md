@@ -1,24 +1,9 @@
-# LIVIO – Sprint 1.9.3 Vision im Projektstandard
+# LIVIO Sprint 1.9.4 Vision Mehrfoto + Masse
 
-Dieses Release erweitert Sprint 1.9.2:
+- Vision Lab: 4 geführte Foto-Slots statt nur ein Foto
+- Projektstandard: mehrere Fotos nacheinander aufnehmen und analysieren
+- Vertrauenswerte werden korrekt als 95 % statt 0.95 % angezeigt
+- Vision Lab mit Breite/Höhe als Richtmass zur Plausibilisierung
+- package-lock Registry bereinigt auf https://registry.npmjs.org/
 
-- Projektstandard kann direkt mit mehreren Fotos unterstützt werden
-- Fotostrecke: ganzes Fenster, geöffneter Flügel/Bandseite, Detail Ecke/Glasleiste, Aussen/Beschattung
-- KI-Vorschlag kann als Projektstandard übernommen werden
-- separater Vision Lab Tester bleibt unter `/vision-test` verfügbar
-- API-Route `/api/vision-analyze` verarbeitet bis zu 6 Bilder
-
-Voraussetzung in Vercel:
-
-```text
-OPENAI_API_KEY=...
-```
-
-Deployment:
-
-```bash
-git add .
-git commit -m "Sprint 1.9.3 Vision Projektstandard"
-git pull --rebase
-git push
-```
+Start: /vision-test

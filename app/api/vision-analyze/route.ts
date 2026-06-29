@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 
 const SYSTEM_PROMPT = `Du bist LIVIO Vision Lab, ein interner KI-Testassistent der Schreinerei Bigler fuer Insektenschutz.
-Analysiere Fensterfotos wie ein erfahrener Schreiner/Monteur. Arbeite vorsichtig: lieber Unsicherheit markieren als falsche Sicherheit.
+Analysiere mehrere Fensterfotos wie ein erfahrener Schreiner/Monteur. Beziehe alle Bilder zusammen ein. Arbeite vorsichtig: lieber Unsicherheit markieren als falsche Sicherheit.
 
 Wichtige Bigler-Regeln:
 - Fluegelecken auf Gehrung, ca. 45 Grad: sehr wahrscheinlich Kunststofffenster.
@@ -26,10 +26,10 @@ Antworte nur als valides JSON mit genau dieser Struktur:
 {
   "summary": "kurze Zusammenfassung",
   "detections": {
-    "element": {"value":"Fenster|Balkontuere|Schiebetuere|Lichtschacht|unklar", "confidence":0},
-    "material": {"value":"Holz|Holz-Alu|Kunststoff|unklar", "confidence":0, "evidence":"..."},
-    "geometry": {"value":"flaechenversetzt|flaechenbuendig|unklar", "confidence":0, "evidence":"..."},
-    "shading": {"value":"Raffstore|Rollladen|Jalousie|keine|unklar", "confidence":0, "evidence":"..."}
+    "element": {"value":"Fenster|Balkontuere|Schiebetuere|Lichtschacht|unklar", "confidence":0.0},
+    "material": {"value":"Holz|Holz-Alu|Kunststoff|unklar", "confidence":0.0, "evidence":"..."},
+    "geometry": {"value":"flaechenversetzt|flaechenbuendig|unklar", "confidence":0.0, "evidence":"..."},
+    "shading": {"value":"Raffstore|Rollladen|Jalousie|keine|unklar", "confidence":0.0, "evidence":"..."}
   },
   "recommendation": {
     "customerProduct":"Spannrahmen|Pendeltuere|Schiebetuere|Rollo|Plissee|Lichtschachtabdeckung|Pruefen",
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: [
-          { type: 'text', text: `Analysiere diese Fensterbilder. Zusatznotiz Nutzer: ${note || 'keine'}` },
+          { type: 'text', text: `Analysiere diese Fensterbilder gemeinsam. Die Fotos koennen verschiedene Ansichten desselben Fensters zeigen. Zusatznotiz Nutzer: ${note || 'keine'}` },
           ...imageParts
         ] }
       ]

@@ -4,16 +4,19 @@ import { useMemo, useState } from 'react';
 type Analysis = any;
 
 export default function VisionTestPage(){
-  const [files,setFiles]=useState<File[]>([]);
+  const [slots,setSlots]=useState<(File|null)[]>([null,null,null,null]);
+  const files=useMemo(()=>slots.filter((x):x is File=>Boolean(x)),[slots]);
   const [note,setNote]=useState('');
+  const [width,setWidth]=useState('');
+  const [height,setHeight]=useState('');
   const [loading,setLoading]=useState(false);
   const [result,setResult]=useState<Analysis|null>(null);
   const [error,setError]=useState('');
   const previews=useMemo(()=>files.map(f=>({name:f.name,url:URL.createObjectURL(f)})),[files]);
 
-  function onFiles(list:FileList|null){
-    if(!list)return;
-    setFiles(Array.from(list).slice(0,6));
+  function setSlot(index:number,list:FileList|null){
+    const file=list?.[0]||null;
+    setSlots(prev=>prev.map((old,i)=>i===index?file:old));
     setResult(null); setError('');
   }
 
@@ -22,7 +25,7 @@ export default function VisionTestPage(){
     try{
       const fd=new FormData();
       files.forEach(f=>fd.append('images',f));
-      fd.append('note',note);
+      fd.append('note',`${note}\nGemessene Breite mm: ${width||'nicht angegeben'}\nGemessene Höhe mm: ${height||'nicht angegeben'}`);
       const res=await fetch('/api/vision-analyze',{method:'POST',body:fd});
       const data=await res.json();
       if(!res.ok) throw new Error(data.error+(data.detail?` - ${data.detail}`:''));
@@ -44,14 +47,15 @@ export default function VisionTestPage(){
       <h1>Fensterfoto analysieren</h1>
       <p>Testversion: Bilder hochladen, KI-Einschätzung prüfen, Regeln verbessern. Noch keine automatische Offerte.</p>
       <div className="hint">
-        <b>Empfohlene Fotos:</b> 1× ganzes Fenster von innen, 1× Flügel geöffnet/Bandseite, 1× Detail Flügelecke oder Aussenseite.
+        <b>Empfohlene Fotos:</b> 1× ganzes Fenster von innen, 1× Flügel geöffnet/Bandseite, 1× Detail Flügelecke/Glasleiste, 1× Aussen/Beschattung. Dazu Breite und Höhe als Richtmass eingeben.
       </div>
     </section>
 
     <section className="vision-grid">
       <div className="card">
-        <h2>Bilder</h2>
-        <input className="file" type="file" accept="image/*" multiple capture="environment" onChange={e=>onFiles(e.target.files)}/>
+        <h2>Bilder und Masse</h2>
+        <div className="photo-slots">{['Ganzes Fenster innen','Flügel geöffnet / Bandseite','Detail Ecke / Glasleiste','Aussen / Beschattung'].map((label,i)=><label className="photo-slot" key={label}><b>{i+1}</b><span>{label}</span><input type="file" accept="image/*" capture="environment" onChange={e=>setSlot(i,e.target.files)}/></label>)}</div>
+        <div className="measure-grid"><label><span>Breite mm</span><input value={width} onChange={e=>setWidth(e.target.value)} inputMode="numeric" placeholder="z.B. 900"/></label><label><span>Höhe mm</span><input value={height} onChange={e=>setHeight(e.target.value)} inputMode="numeric" placeholder="z.B. 1200"/></label></div>
         <textarea value={note} onChange={e=>setNote(e.target.value)} placeholder="Optionale Notiz, z.B. Schlafzimmer, Baujahr 2018, Raffstore vorhanden..." />
         <button className="vision-button" disabled={!files.length||loading} onClick={analyze}>{loading?'Analysiere...':'Analyse starten'}</button>
         {error&&<div className="err">{error}</div>}
@@ -79,7 +83,8 @@ export default function VisionTestPage(){
   </main>
 }
 
-function Confidence({n}:{n:number}){return <span className={n>=90?'ok':n>=70?'mid':'low'}>{n}%</span>}
+function pct(n:any){const v=Number(n)||0; return v<=1?Math.round(v*100):Math.round(v)}
+function Confidence({n}:{n:number}){const v=pct(n);return <span className={v>=90?'ok':v>=70?'mid':'low'}>{v}%</span>}
 function Row({label,obj}:{label:string,obj:any}){return <div className="row"><span>{label}</span><b>{obj?.value||'-'} {typeof obj?.confidence==='number'&&<Confidence n={obj.confidence}/>}</b>{obj?.evidence&&<small>{obj.evidence}</small>}</div>}
 function Result({data}:{data:any}){
   return <div className="result">
