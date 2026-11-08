@@ -1,0 +1,5 @@
+// Install at src/app/api/integrations/livio/intakes/route.ts in Commerce Core.
+import {receiveLivio} from '../../../../../server/livio';
+import {postgresStore} from '../../../../../core/store';
+export const runtime='nodejs';
+export async function POST(request:Request){return receiveLivio(request,postgresStore());}

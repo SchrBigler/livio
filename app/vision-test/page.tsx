@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 type Analysis = any;
 
@@ -13,6 +13,8 @@ export default function VisionTestPage(){
   const [result,setResult]=useState<Analysis|null>(null);
   const [error,setError]=useState('');
   const previews=useMemo(()=>files.map(f=>({name:f.name,url:URL.createObjectURL(f)})),[files]);
+
+  useEffect(()=>()=>previews.forEach(p=>URL.revokeObjectURL(p.url)),[previews]);
 
   function setSlot(index:number,list:FileList|null){
     const file=list?.[0]||null;
