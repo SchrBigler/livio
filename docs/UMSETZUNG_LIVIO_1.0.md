@@ -2,6 +2,10 @@
 
 Stand: 8. November 2026. Entwicklungszweig `work/livio-1-integration` im bestehenden Repository `SchrBigler/livio`. Keine neue separate Anwendung.
 
+## Nachtrag: Mitarbeiterzugang freigegeben und eingerichtet
+
+Urs hat den konkret benannten Testzugang mit «Ja, go» ausdrücklich autorisiert. Die zuvor abgelehnte persönliche Berechtigung ist danach erfolgreich eingerichtet und in einer neuen READY-Testbereitstellung wirksam. Es wurden keine Produktivberechtigungen vergeben. Die Anmeldeseite ist erreichbar, eine persönliche Live-Anmeldung wurde nicht automatisiert durchgeführt. Die Zugangsdaten sind ausschliesslich separat und privat bereitgestellt, niemals im Repository. Dieser Nachtrag ersetzt die frühere Zugangssperre; fachliche Preisfreigabe und laufende Commerce-Anbindung bleiben offen.
+
 ## Ergänzung: konkret eingerichteter Betriebsstand
 
 Der Entwicklungszweig verwendet jetzt eine echte, isolierte Neon-Datenbank `livio` auf dem Zweig `livio-test-20261108` (`br-dry-butterfly-b1ajr30e`). Nur die branchbezogene Vercel-Testumgebung erhält diese Verbindung. LIVIO-Tabellen und Foto-Metadaten sind dort angelegt. Ein privater Vercel-Blob-Speicher `bigler-livio-originalfotos` in Frankfurt ist verbunden. Grössere Originale werden direkt und privat hochgeladen; Projektanfragen enthalten anschließend zugeordnete Referenzen. Der Server prüft Eigentümer, Projekt, Originalname, Dateigrösse und Blob-Metadaten. Leserechte sind auf den Anfrageschlüssel oder authentifizierte Mitarbeitende begrenzt. Wiederholte Uploads erkennen vorhandene Foto-IDs. Keine Bildkompression an gespeicherten Originalen; für die KI-Analyse wird nur eine temporäre kleinere Kopie erstellt.
