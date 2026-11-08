@@ -59,6 +59,8 @@ Die lokale Kundenansicht zeigt technische Prüfung, fehlende Angaben und nötige
 
 ## Prüfung und konkrete offene Punkte
 
+Zusätzlich wurde die bereitgestellte Vercel-Testversion im Browser vom Einstieg bis zum gespeicherten Fenster durchlaufen: Projekt/Adresse, Raum Küche, manuelle Erfassung ohne Fotos, Material/Beschattung, Gewebe/Farbe, Produktauswahl, Übermasssperre und Wiederherstellung des gespeicherten Elements nach Neuladen. Die Startansicht und Zustände wurden per Browser-DOM geprüft. Eine Screenshotaufnahme schlug in der Browserumgebung fehl; eine visuelle Desktop-/Mobil-Abnahme wird daher nicht als abgeschlossen behauptet.
+
 Automatisierte Tests prüfen Messvalidierung, Abschirmung kundenseitiger Freigaben, Preiszellen, fehlende/abgelaufene Daten, DB2, Altimport, Session-Signaturen, Grössenlimits und den technischen Ablauf über die echten API-Handler mit PostgreSQL in PGlite. Commerce-Tests prüfen signierte Übernahme, Rechte, Wiederholungen, Versionskonflikte und das Wiederverwenden zentraler Kunden/Vorgänge/Entwürfe. Testpreiswerte sind ausschließlich synthetische Fixtures und werden nie in eine Konfiguration importiert.
 
 Noch für die volle produktive Zielerreichung erforderlich:
