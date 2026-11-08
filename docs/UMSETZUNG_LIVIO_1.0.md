@@ -2,6 +2,20 @@
 
 Stand: 8. November 2026. Entwicklungszweig `work/livio-1-integration` im bestehenden Repository `SchrBigler/livio`. Keine neue separate Anwendung.
 
+## Ergänzung: konkret eingerichteter Betriebsstand
+
+Der Entwicklungszweig verwendet jetzt eine echte, isolierte Neon-Datenbank `livio` auf dem Zweig `livio-test-20261108` (`br-dry-butterfly-b1ajr30e`). Nur die branchbezogene Vercel-Testumgebung erhält diese Verbindung. LIVIO-Tabellen und Foto-Metadaten sind dort angelegt. Ein privater Vercel-Blob-Speicher `bigler-livio-originalfotos` in Frankfurt ist verbunden. Grössere Originale werden direkt und privat hochgeladen; Projektanfragen enthalten anschließend zugeordnete Referenzen. Der Server prüft Eigentümer, Projekt, Originalname, Dateigrösse und Blob-Metadaten. Leserechte sind auf den Anfrageschlüssel oder authentifizierte Mitarbeitende begrenzt. Wiederholte Uploads erkennen vorhandene Foto-IDs. Keine Bildkompression an gespeicherten Originalen; für die KI-Analyse wird nur eine temporäre kleinere Kopie erstellt.
+
+Der Originalkatalog ist gefunden und ausgewertet: 11 konkrete Tabellen, 2’380 Preisfelder, 13 exakte Produktcodes; Quelle `ISN komplett 2026-06-komprimiert.pdf`, Preisstand 04/2025 CHF. Die Lieferantendaten liegen ausschliesslich in der geschützten Testdatenbank, nicht im öffentlichen Repository. In mehrdeutigen, unvollständig extrahierten Tabellenzeilen werden keine Zellen erfunden. Der Import ist ausdrücklich noch nicht als aktuell gültige Verkaufspreisgrundlage freigegeben. Einkaufskonditionen, auftragsbezogene Leistungsansätze und Tabellenaktualität sind fachlich zu bestätigen. Der interne Prüfbereich zeigt nachvollziehbare Tabellenfelder und Zuschläge; kundenöffentlich werden daraus keine ungesicherten Preise erzeugt.
+
+Die interne Elementkorrektur hat jetzt Formularfelder für Raum, Bezeichnung, Produktcode, Gewebe/Farbe, Befestigung, DIN, Entwässerung und X/Y/Z/W-Detailmasse. Lichtschächte erhalten Robustec und passende Farben statt der Fenster-Standardausführung. Dachfenster werden bis zur exakten Variantenprüfung als eigene Prüfposition erfasst.
+
+Eine unterstützte Fotomessung mit vier bekannten Referenzecken und vier Öffnungsecken ist ergänzt. Ein planares Homografieverfahren rechnet ausschließlich in einer ausdrücklich bestätigten gemeinsamen Ebene. Ungeeignete Referenzen, gekreuzte Ecken, stark abweichende Gegenkanten oder nicht rechteckige Geometrie werden abgewiesen. Ergebnis bleibt geschätzt und kann niemals eine Bestellmassfreigabe ersetzen. Die mathematischen Tests sind erfolgreich; eine vor Ort an realen Fenstern validierte Messgenauigkeit wird nicht behauptet.
+
+Die automatische Freigabeprüfung hat die Einrichtung des persönlichen Preview-Mitarbeiterkontos für Urs abgelehnt: Empfänger, geschützte Ressourcen und Berechtigungsumfang benötigen eine ausdrückliche Nutzerfreigabe. Diese Einrichtung wurde nicht über einen anderen Weg umgangen. Der Session-Signaturschlüssel ist konfiguriert, aber ein persönlicher Zugriff bleibt bis zu dieser Freigabe gesperrt.
+
+Die folgenden Abschnitte dokumentieren den früheren Zwischenstand. Bei Widersprüchen ist diese Ergänzung massgebend. Die noch nicht laufend bereitgestellte Commerce-Instanz, deren Identitäts-/Dokumenten-/Versandkonfiguration und die fachlichen Preisdaten bleiben Voraussetzungen für die vollständige produktive Abnahme. Ein separates paralleles Verkaufsdokumentensystem wird nicht errichtet.
+
 ## Nachgewiesener Bestand
 
 Ausgangspunkt ist Commit `b1a93013d6f1311b41662261e256cb62e6ed4871` (Sprint 1.9.4). Der zugehörige Bibliotheksstand `livio-github-starter-1-9-4-vision-mehrfoto-masse.zip` hat dieselbe `app/page.tsx`. Zusätzlich geprüft: `livio-vision-tester.zip` und die aktuelle Datei `BIGLER_Commerce_Core_1.7_Quellcode.zip`. Die Originalarchive wurden unverändert übernommen, lokal separat entpackt und vor Änderungen ein Git-Bundle erstellt. Wiederherstellung siehe WIEDERHERSTELLUNG.md.

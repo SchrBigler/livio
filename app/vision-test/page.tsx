@@ -1,4 +1,5 @@
 'use client';
+import {analysisCopy} from '../../lib/vision-images';
 import { useEffect, useMemo, useState } from 'react';
 
 type Analysis = any;
@@ -26,7 +27,7 @@ export default function VisionTestPage(){
     setLoading(true); setError(''); setResult(null);
     try{
       const fd=new FormData();
-      files.forEach(f=>fd.append('images',f));
+      for(const f of files)fd.append('images',await analysisCopy(f),f.name+'.jpg');
       fd.append('note',`${note}\nGemessene Breite mm: ${width||'nicht angegeben'}\nGemessene Höhe mm: ${height||'nicht angegeben'}`);
       const res=await fetch('/api/vision-analyze',{method:'POST',body:fd});
       const data=await res.json();

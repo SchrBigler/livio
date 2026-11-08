@@ -16,13 +16,17 @@ export const Measurement = z.object({
   if(m.status==='released'&&(m.kind!=='order'||!m.releasedBy||!m.releasedAt)) c.addIssue({code:'custom',message:'Bestellmassfreigabe fehlt.'});
 });
 export type MeasurementValue = z.infer<typeof Measurement>;
-export const Photo = z.object({name:z.string().max(200),size:z.number().int().min(1).max(4_000_000),url:z.string().max(5_400_000).regex(/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/)});
+export const Photo = z.object({name:z.string().max(200),size:z.number().int().min(1).max(10_000_000),storageId:z.uuid().optional(),url:z.string().max(13_400_000)}).superRefine((p,c)=>{
+  if(p.storageId){if(p.url!==`/api/livio/photos/${p.storageId}`)c.addIssue({code:'custom',message:'Ungültige Fotozuordnung.'});}
+  else if(!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(p.url))c.addIssue({code:'custom',message:'Originalfoto fehlt.'});
+});
 export const Element = z.object({
   id:z.string().min(1).max(100),area:z.string().min(1).max(120),type:z.enum(['Fenster','Balkontüre','Schiebetüre','Dachfenster','Lichtschacht']),
   location:z.string().max(200).default(''),note:z.string().max(4000).default(''),count:z.number().int().min(1).max(100),
   product:z.string().min(1).max(60),productLabel:z.string().max(120),internalCode:z.string().max(60),
   width:mm,height:mm,material:z.string().max(100),shading:z.string().max(100),mesh:z.string().max(30),color:z.string().max(60),
   status:z.enum(['estimated','manual-review']),statusNote:z.string().max(1000).optional(),price:z.number().nullable().default(null),
+  technicalDetails:z.object({din:z.string().max(100).optional(),fixing:z.string().max(500).optional(),drainage:z.string().max(100).optional(),xTop:z.string().max(100).optional(),xBottom:z.string().max(100).optional(),y:z.string().max(100).optional(),z:z.string().max(100).optional(),w:z.string().max(100).optional()}).optional(),
   photos:z.array(Photo).max(6),measurement:Measurement.optional(),
   analysis:z.unknown().optional(),analysisConfirmed:z.boolean().default(false),
   technicalStatus:z.enum(['unreviewed','needs-info','site-measure','review','released']).default('unreviewed'),

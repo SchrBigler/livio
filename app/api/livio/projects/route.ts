@@ -1,4 +1,5 @@
 import {z} from 'zod';
+import {verifyProjectPhotos} from '../../../../server/photos';
 import {intake,Project} from '../../../../lib/livio';
 import {database} from '../../../../server/db';
 import {hash,owner,staff} from '../../../../server/auth';
@@ -6,7 +7,7 @@ import {body,failure,json,sameOrigin} from '../../../../server/http';
 export const dynamic='force-dynamic';
 export async function POST(r:Request){let client;try{
   sameOrigin(r);const ownerHash=owner(r),p=intake(await body(r));
-  client=await database().connect();await client.query('BEGIN');
+  client=await database().connect();await verifyProjectPhotos(client,p,ownerHash);await client.query('BEGIN');
   const added=await client.query('INSERT INTO livio_projects(id,owner_hash,data) VALUES($1,$2,$3) ON CONFLICT DO NOTHING RETURNING id',[p.id,ownerHash,JSON.stringify(p)]);
   const row=(await client.query('SELECT id,owner_hash,status,revision FROM livio_projects WHERE id=$1',[p.id])).rows[0];
   if(row.owner_hash!==ownerHash)throw new Error('not_found');

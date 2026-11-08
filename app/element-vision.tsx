@@ -1,4 +1,5 @@
 'use client';
+import {analysisCopy} from '../lib/vision-images';
 import {useState} from 'react';
 import {Analysis,type VisionResult} from '../lib/vision';
 type Photo={name:string;url:string;size:number};
@@ -7,7 +8,7 @@ export default function ElementVision({photos,note,shaft,onConfirm,onResult}:{ph
   const [material,setMaterial]=useState('unklar'),[shading,setShading]=useState('unklar');
   async function analyze(){setLoading(true);setError('');setResult(null);try{
     const fd=new FormData();
-    for(const p of photos){const blob=await (await fetch(p.url)).blob();fd.append('images',blob,p.name);}
+    for(const p of photos){const blob=await (await fetch(p.url)).blob();fd.append('images',await analysisCopy(blob),p.name+'.jpg');}
     fd.append('note',`${shaft?'Lichtschacht: keine Fenstertypfrage. ':''}${note}`);
     const response=await fetch('/api/vision-analyze',{method:'POST',body:fd});const data=await response.json();if(!response.ok)throw new Error(data.error);
     const parsed=Analysis.parse(data);setResult(parsed);onResult(parsed);setMaterial(parsed.detections.material.value);setShading(parsed.detections.shading.value);

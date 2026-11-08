@@ -1,0 +1,10 @@
+'use client';
+import {useState} from 'react';
+import type {LivioElement} from '../../../lib/livio';
+export default function ElementEditor({element,save,busy}:{element:LivioElement;save:(value:LivioElement)=>void;busy:boolean}){
+  const [e,setE]=useState(element);const text=(key:'area'|'location'|'note'|'productLabel'|'internalCode'|'material'|'shading'|'mesh'|'color'|'reviewNote',label:string)=><label className="field" key={key}>{label}<input value={e[key]} onChange={ev=>setE({...e,[key]:ev.target.value})}/></label>;
+  return <details className="no-print"><summary>Elementangaben und technische Details bearbeiten</summary><div className="grid">{text('area','Raum')}{text('location','Ort / Bezeichnung')}{text('productLabel','Produktname für Kunden')}{text('internalCode','Exakter Lieferantencode')}{text('material','Fenstermaterial')}{text('shading','Beschattung')}{text('mesh','Gewebe-Code')}{text('color','Farb-Code')}
+    <label className="field">Anzahl<input type="number" min="1" value={e.count} onChange={ev=>setE({...e,count:Number(ev.target.value)})}/></label><label className="field">Technische Einordnung<select value={e.status} onChange={ev=>setE({...e,status:ev.target.value as LivioElement['status']})}><option value="estimated">Als Richtpreisposition fachlich plausibel</option><option value="manual-review">Ungeklärt / manuelle Prüfung</option></select></label>
+    {(['din','fixing','drainage','xTop','xBottom','y','z','w'] as const).map(key=><label className="field" key={key}>{({din:'Öffnungsrichtung / DIN',fixing:'Befestigung',drainage:'Entwässerung',xTop:'X oben mm',xBottom:'X unten mm',y:'Y mm',z:'Z mm',w:'W mm'})[key]}<input value={e.technicalDetails?.[key]||''} onChange={ev=>setE({...e,technicalDetails:{...e.technicalDetails,[key]:ev.target.value}})}/></label>)}
+    {text('note','Notiz / Rückfrage')}{text('reviewNote','Fachlicher Vermerk')}</div><p className="mini-note">Technische Änderungen heben eine vorhandene Bestellmassfreigabe dieses Elements auf.</p><button className="secondary" disabled={busy} onClick={()=>save(e)}>Elementkorrektur speichern</button></details>;
+}
