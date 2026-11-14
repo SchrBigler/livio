@@ -17,7 +17,7 @@ export default function AppleIcon() {
         }}>
           <div style={{
             display: 'flex', width: 68, height: 88, border: '5px solid #c4e9bd',
-            background: 'repeating-linear-gradient(0deg, transparent 0px, transparent 10px, #8bb6a5 11px, transparent 12px), repeating-linear-gradient(90deg, transparent 0px, transparent 10px, #8bb6a5 11px, transparent 12px)'
+            backgroundColor: '#0c6661'
           }} />
         </div>
         <div style={{
